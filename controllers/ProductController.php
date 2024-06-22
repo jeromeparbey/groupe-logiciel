@@ -14,6 +14,7 @@ class ProductController {
         include 'views/products.php';
     }
 
+
     public function create() {
         if (!isset($_SESSION['username'])) {
             header('Location: index.php');
@@ -44,6 +45,25 @@ class ProductController {
             } else {
                 echo "Erreur lors de la création du produit dans la base de données.";
             }
+        }
+    }
+
+    public function delete() {
+        if (!isset($_SESSION['username'])) {
+            header('Location: index.php');
+            exit;
+        }
+    
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['product_id'])) {
+            $productId = $_POST['product_id'];
+            if ($this->productModel->deleteProduct($productId)) {
+                header('Location: index.php?controller=product&action=index');
+                exit;
+            } else {
+                echo "Erreur lors de la suppression du produit.";
+            }
+        } else {
+            echo "Requête invalide pour la suppression du produit.";
         }
     }
 }

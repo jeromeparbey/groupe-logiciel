@@ -48,17 +48,53 @@
         function closeModal(modalId) {
             document.getElementById(modalId).style.display = "none";
         }
+
+
+let prevScrollPos = window.pageYOffset;
+
+window.addEventListener('scroll', function() {
+ 
+  const currentScrollPos = window.pageYOffset;
+
+  if (prevScrollPos > currentScrollPos) {
+   
+
+    document.querySelector('.navbar').classList.remove('show');
+  } else {
+   
+    document.querySelector('.navbar').classList.add('show');
+  }
+
+  prevScrollPos = currentScrollPos;
+});
     </script>
 </head>
 <body>
-    <header>
-        <h1>Mini Site de Vente</h1>
+    <header class="navbar">
+        
+        <h1 class="heading__primary" >Mini Site de Vente</h1>
+
+      <div class="icon-div">  <img  class="icon" src="public/images/irt-shop-high-resolution-logo.svg" alt="" srcset="">
+    <h2 class="icon-text">IRT2_shop</h2c>
+    </div>
+
         <?php if (isset($_SESSION['username'])): ?>
             <button onclick="openModal('createProductModal')">Créer un produit</button>
             <a href="index.php?controller=user&action=logout">Déconnexion</a>
         <?php else: ?>
             <button onclick="openModal('loginModal')">Admin</button>
         <?php endif; ?>
+
+        <nav >
+        <ul>
+            <li><a href="index.php?controller=home&action=index">Accueil</a></li>
+            <li><a href="index.php?controller=product&action=index">Produits</a></li>
+            <li><a href="index.php?controller=shop&action=index">Boutique</a></li>
+            <li><a href="index.php?controller=services&action=index">Services</a></li>
+            <li><a href="index.php?controller=about&action=index">À propos</a></li>
+        </ul>
+    </nav>
+   
     </header>
     <hr>
     <!-- Formulaire de connexion  -->
