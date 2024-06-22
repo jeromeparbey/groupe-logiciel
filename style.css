@@ -1,0 +1,63 @@
+body{
+    margin: 5px;
+    padding: 8px;
+}
+
+.price{
+    background-color: rgba(9, 123, 223, 0.421);
+    border-radius: 30px;
+    border: 1px solid black;
+    display: flex;
+    height: 15px;
+    position: relative;
+    padding: 4px;
+    font-size: smaller;
+    width: 100px;
+    transition: background-color 1s ;
+    justify-content: center;
+
+}
+.description{
+    
+    display: flex;
+ margin-inline: 10%;
+}
+
+.nom{
+    border: 1px solid black;
+    height: 50px;
+    padding-top: 8%;
+    display: flex;
+    justify-content: center;
+}
+.price:hover{
+    background-color: rgba(9, 123, 223, 0.253);
+    cursor: pointer;
+    border: 1.5px solid black;
+    
+}
+
+.produitCadre{
+    display: flex;
+    width: 300px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+
+}
+
+.separation{
+    border: 1px solid black;
+}
+
+.image{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+
+.imageCadre{
+    display: flex;
+    justify-content: center;
+}
