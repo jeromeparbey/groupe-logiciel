@@ -1,0 +1,33 @@
+body{
+    margin: 5px;
+    padding: 8px;
+}
+
+.price{
+    background-color: rgba(9, 123, 223, 0.421);
+    border-radius: 30px;
+    border: 1px solid black;
+    display: flex;
+    height: 15px;
+    position: relative;
+    padding: 4px;
+    font-size: smaller;
+    transition: background-color 1s ;
+
+}
+
+.price:hover{
+    background-color: rgba(9, 123, 223, 0.253);
+    cursor: pointer;
+    border: 1.5px solid black;
+}
+
+.produitCadre{
+    display: flex;
+    width: 300px;
+
+}
+
+.separation{
+    border: 1px solid black;
+}
