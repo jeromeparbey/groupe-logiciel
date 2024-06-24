@@ -20,13 +20,19 @@ switch ($controller) {
         require_once 'controllers/ProductController.php';
         $controller = new ProductController();
         break;
+        case 'shop':
+            require_once 'controllers/ShopController.php';
+            $controller = new ShopController();
+            break;
     case 'user':
         require_once 'controllers/UserController.php';
         $controller = new UserController();
         break;
     default:
         die('Controller not found');
+        
 }
+
 
 $controller->$action();
 ob_end_flush();
