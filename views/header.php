@@ -1,9 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mini Site de Vente</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
+     
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600&display=swap" rel="stylesheet">
     <style>
-   
         .modal {
             display: none;
             position: fixed;
@@ -13,7 +20,6 @@
             width: 100%;
             height: 100%;
             overflow: auto;
-            background-color: rgb(0,0,0);
             background-color: rgba(0,0,0,0.4);
         }
 
@@ -38,9 +44,17 @@
             text-decoration: none;
             cursor: pointer;
         }
+        
+        .navbar-custom {
+            background-color: #343a40;
+        }
+
+        .navbar-custom .navbar-brand,
+        .navbar-custom .navbar-nav .nav-link {
+            color: white;
+        }
     </style>
     <script>
-        // Script pour ouvrir et fermer le formulaire de connexion et de création de produit modal
         function openModal(modalId) {
             document.getElementById(modalId).style.display = "block";
         }
@@ -49,91 +63,121 @@
             document.getElementById(modalId).style.display = "none";
         }
 
-
-let prevScrollPos = window.pageYOffset;
-
-window.addEventListener('scroll', function() {
- 
-  const currentScrollPos = window.pageYOffset;
-
-  if (prevScrollPos > currentScrollPos) {
-   
-
-    document.querySelector('.navbar').classList.remove('show');
-  } else {
-   
-    document.querySelector('.navbar').classList.add('show');
-  }
-
-  prevScrollPos = currentScrollPos;
-});
+        let prevScrollPos = window.pageYOffset;
+        window.addEventListener('scroll', function() {
+            const currentScrollPos = window.pageYOffset;
+            if (prevScrollPos > currentScrollPos) {
+                document.querySelector('.navbar').classList.remove('show');
+                document.querySelector('.logo').classList.remove('up');
+            } else {
+                document.querySelector('.navbar').classList.add('show');
+                document.querySelector('.logo').classList.add('up');
+            }
+            prevScrollPos = currentScrollPos;
+        });
     </script>
 </head>
 <body>
-    <header class="navbar">
-        
-        <h1 class="heading__primary" >Mini Site de Vente</h1>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+            <a class="navbar-brand" href="#">
+                <img src="public/images/irt-shop-high-resolution-logo-transparent.svg" width="40" height="40" class="d-inline-block align-top" alt="icon">
+                IRT2_shop
+            </a>
 
-      <div class="icon-div">  <img  class="icon" src="public/images/irt-shop-high-resolution-logo.svg" alt="" srcset="">
-    <h2 class="icon-text">IRT2_shop</h2c>
-    </div>
-
-        <?php if (isset($_SESSION['username'])): ?>
-            <button onclick="openModal('createProductModal')">Créer un produit</button>
-            <a href="index.php?controller=user&action=logout">Déconnexion</a>
-        <?php else: ?>
-            <button onclick="openModal('loginModal')">Admin</button>
-        <?php endif; ?>
-
-        <nav >
-        <ul>
-            <li><a href="index.php?controller=home&action=index">Accueil</a></li>
-            <li><a href="index.php?controller=product&action=index">Produits</a></li>
-            <li><a href="index.php?controller=shop&action=index">Boutique</a></li>
-            <li><a href="index.php?controller=services&action=index">Services</a></li>
-            <li><a href="index.php?controller=about&action=index">À propos</a></li>
+         
+            <img class="logo" src="public/images/irt-shop-high-resolution-logo.svg" alt="logo">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="index.php?controller=home&action=index">
+                    <i class="fas fa-home"></i> Accueil
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="index.php?controller=product&action=index">
+                    <i class="fas fa-box"></i> Produits
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="index.php?controller=shop&action=index">
+                    <i class="fas fa-shopping-cart"></i> Boutique
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="index.php?controller=services&action=index">
+                    <i class="fas fa-concierge-bell"></i> Services
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="index.php?controller=about&action=index">
+                    <i class="fas fa-info-circle"></i> À propos
+                </a>
+            </li>
         </ul>
-    </nav>
-   
+                <?php if (isset($_SESSION['username'])): ?>
+                    <button class="btn btn-outline-light my-2 my-sm-0" onclick="openModal('createProductModal')">Créer un produit</button>
+                    <a class="btn btn-outline-light my-2 my-sm-0 ml-2" href="index.php?controller=user&action=logout">Déconnexion</a>
+                <?php else: ?>
+                    <button class="btn btn-outline-light my-2 my-sm-0" onclick="openModal('loginModal')">Admin</button>
+                <?php endif; ?>
+
+            </div>
+        </nav>
     </header>
     <hr>
     <!-- Formulaire de connexion  -->
-
     <div id="loginModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('loginModal')">&times;</span>
             <h2>Connexion</h2>
             <form method="POST" action="index.php?controller=user&action=login">
-                <label for="username">Nom d'utilisateur:</label>
-                <input type="text" name="username" required>
-                <br>
-                <label for="password">Mot de passe:</label>
-                <input type="password" name="password" required>
-                <br>
-                <button type="submit">Connexion</button>
+                <div class="form-group">
+                    <label for="username">Nom d'utilisateur:</label>
+                    <input type="text" name="username" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Mot de passe:</label>
+                    <input type="password" name="password" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Connexion</button>
             </form>
         </div>
     </div>
+
     <!-- Formulaire de création de produit  -->
     <div id="createProductModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('createProductModal')">&times;</span>
             <h2>Ajouter un produit</h2>
-            <form method="POST" action="index.php?controller=product&action=create" enctype="multipart/form-data">
-                <label for="name">Nom:</label>
-                <input type="text" name="name" required>
-                <br>
-                <label for="description">Description:</label>
-                <textarea name="description" required></textarea>
-                <br>
-                <label for="price">Prix:</label>
-                <input type="text" name="price" required>
-                
-            <br>
-            <label for="image">Image:</label>
-            <input type="file" name="image" required>
-            <br>
-                <button type="submit">Ajouter</button>
+            <form class="add" method="POST" action="index.php?controller=product&action=create" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="name">Nom:</label>
+                    <input type="text" name="name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea name="description" class="form-control" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="price">Prix:</label>
+                    <input type="text" name="price" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="image">Image:</label>
+                    <input type="file" name="image" class="form-control-file" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Ajouter</button>
             </form>
         </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </div>
+    
+
+

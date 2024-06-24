@@ -11,4 +11,4 @@ if ($userModel->createUser($username, $password)) {
 } else {
     echo "Failed to create admin user.";
 }
-?>;
+?>
