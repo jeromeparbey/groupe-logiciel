@@ -11,7 +11,7 @@
     
     <div class="row">
         <?php foreach ($products as $product): ?>
-            <div class="col-md-4 mb-4">
+            <div class="col-md-4 mb-4 ">
             <div class="card h-100">
     <?php if (!empty($product['image'])): ?>
         <img src="<?php echo htmlspecialchars($product['image']); ?>" alt="<?php echo htmlspecialchars($product['name']); ?>" class="card-img-top" style="height: 200px; object-fit: cover;">
@@ -19,8 +19,10 @@
     <div class="card-body">
         <h5 class="card-title"><?php echo htmlspecialchars($product['name']); ?></h5>
         <p class="card-text"><?php echo htmlspecialchars($product['description']); ?></p>
+        <div class="bas">
         <p class="card-text"><strong>Prix: <?php echo htmlspecialchars($product['price']); ?> CFA</strong></p>
         <a href="https://wa.me/22898576682?text=<?php echo urlencode('Salut, j’aimerais acheter ce produit: ' . $product['name'] . ' - ' . 'https://http://localhost/groupe%20logiciel/index.php?controller=product&action=index' . $product['id']); ?>" target="_blank" class="btn btn-primary">Acheter</a>
+        </div>
     </div>
     <?php if (isset($_SESSION['username'])): ?>
         <div class="card-footer">

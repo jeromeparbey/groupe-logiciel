@@ -405,6 +405,16 @@ border-radius: 20px;
 .col-md-3 .card{
   background-image: url('public/images/IRT-bg6.jpeg');
   color: aliceblue;
+
+}
+
+.col-md-4 .card{
+  border: 2px solid rgb(38, 37, 37);
+
+}
+
+.col-md-4 .card:hover {
+  border: 2px solid rgba(101, 147, 228, 0.858);
 }
 
 .contate{
@@ -484,6 +494,7 @@ a {
 }
 .card-body {
     text-align: center;
+    box-shadow: 0 -2px 2px 5px  rgba(0, 0, 0, 0.2) inset;
 }
 
 .modal-content {
@@ -508,4 +519,12 @@ a {
 
 .container h1 , p{
   color: #46C1F6;
+}
+
+h5 + p {
+  box-shadow: 0 0px 2px rgba(0, 0, 0, 0.2);
+}
+
+.bas{
+opacity: 1;
 }
