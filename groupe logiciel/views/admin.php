@@ -1,5 +1,6 @@
 <?php include 'header.php'; ?>
 <h2>Ajouter un produit</h2>
+
 <form method="POST" action="index.php?controller=product&action=create" enctype="multipart/form-data">
     <label for="name">Nom:</label>
     <input type="text" name="name" required>
