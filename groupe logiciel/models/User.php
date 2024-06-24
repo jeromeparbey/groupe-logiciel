@@ -20,4 +20,4 @@ class User {
         return $stmt->execute([$username, $hashedPassword]);
     }
 }
-?>;
+?>
